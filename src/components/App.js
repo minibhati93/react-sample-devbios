@@ -2,6 +2,7 @@ import { Component } from 'react';
 import '../styles/App.css';
 import DisplayBios from './DisplayBios';
 import Developer from '../models/Developer';
+import AddDevelopers from './AddDeveloper';
 
 class App extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class App extends Component {
     return (
       <div className="App">
         <DisplayBios developers={this.state.developers}/>
+        <AddDevelopers addDevelopers={this.addDevelopers}/>
       </div>
     );
   }
