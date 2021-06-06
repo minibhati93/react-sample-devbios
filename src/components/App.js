@@ -3,6 +3,13 @@ import '../styles/App.css';
 import DisplayBios from './DisplayBios';
 import Developer from '../models/Developer';
 import AddDevelopers from './AddDeveloper';
+import {
+  BrowserRouter as Router,
+  Switch, Route
+}
+from 'react-router-dom';
+import Home from './Home';
+import Navbar from './Navbar';
 
 class App extends Component {
   constructor(props) {
@@ -25,10 +32,22 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <DisplayBios developers={this.state.developers}/>
-        <AddDevelopers addDevelopers={this.addDevelopers}/>
-      </div>
+      <Router>
+        <Navbar/>
+        <Switch>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+          <Route path="/bios">
+            <DisplayBios developers={this.state.developers}/>
+          </Route>
+        </Switch>
+        <Switch>
+          <Route path="/create-bio">
+            <AddDevelopers addDevelopers={this.addDevelopers}/>
+          </Route>          
+        </Switch>
+      </Router>
     );
   }
 }
